@@ -12,6 +12,11 @@
     "@kinde-oss/kinde-auth-nextjs": "^2.2.13",
     "@radix-ui/react-slot": "^1.0.2",
     "@tailwindcss/typography": "^0.5.13",
+    "@tanstack/react-query": "^5.44.0",
+    "@trpc/client": "^11.0.0-rc.401",
+    "@trpc/next": "^11.0.0-rc.401",
+    "@trpc/react-query": "^11.0.0-rc.401",
+    "@trpc/server": "^11.0.0-rc.401",
     "add": "^2.0.6",
     "button": "^1.1.1",
     "class-variance-authority": "^0.7.0",
@@ -23,7 +28,8 @@
     "react-dom": "^18",
     "shadcn-ui": "^0.2.3",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20",
