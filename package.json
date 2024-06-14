@@ -14,12 +14,14 @@
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-progress": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-toast": "^1.1.5",
     "@tailwindcss/typography": "^0.5.13",
     "@tanstack/react-query": "^5.44.0",
     "@trpc/client": "^11.0.0-rc.401",
     "@trpc/next": "^11.0.0-rc.401",
     "@trpc/react-query": "^11.0.0-rc.401",
     "@trpc/server": "^11.0.0-rc.401",
+    "@uploadthing/react": "^6.6.0",
     "add": "^2.0.6",
     "button": "^1.1.1",
     "class-variance-authority": "^0.7.0",
@@ -36,6 +38,7 @@
     "shadcn-ui": "^0.2.3",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
+    "uploadthing": "^6.12.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
