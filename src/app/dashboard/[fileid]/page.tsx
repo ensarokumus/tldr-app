@@ -36,7 +36,7 @@ const page = async ({ params }: PageProps) => {
         {/* left side of the pdf view page */}
         <div className="flex-1 xl:flex">
           <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
-            <PdfRenderer />
+            <PdfRenderer url={file.url} />
           </div>
         </div>
 
