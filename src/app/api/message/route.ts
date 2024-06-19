@@ -28,7 +28,7 @@ export const POST = async (request: NextRequest) => {
   });
 
   if (!file) {
-    return new Response("Npt found", { status: 404 });
+    return new Response("Not found", { status: 404 });
   }
 
   await db.message.create({
