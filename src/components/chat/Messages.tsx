@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { trpc } from "@/app/_trpc/client";
 import { INFINITE_QUERY_LIMIT } from "@/config/infinite-query";
-import { keepPreviousData } from "@tanstack/react-query";
 import { Loader2, MessageSquare } from "lucide-react";
 import Skeleton from "react-loading-skeleton";
 import Message from "./Message";
 import { ChatContext } from "./ChatContext";
+import { useIntersection } from "@mantine/hooks";
 
 interface MessagesProps {
   fileId: string;
@@ -45,6 +45,19 @@ const Messages = ({ fileId }: MessagesProps) => {
     ...(messages ?? []),
   ];
 
+  const lastMessageRef = useRef<HTMLDivElement>(null);
+
+  const { ref, entry } = useIntersection({
+    root: lastMessageRef.current,
+    threshold: 1,
+  });
+
+  useEffect(() => {
+    if (entry?.isIntersecting) {
+      fetchNextPage();
+    }
+  }, [entry, fetchNextPage]);
+
   return (
     <div className="flex flex-col-reverse flex-1 gap-4 max-h-[calc(100vh-3.5rem-7rem)] border-zinc-200 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
       {combinedMessages && combinedMessages.length > 0 ? (
@@ -56,6 +69,7 @@ const Messages = ({ fileId }: MessagesProps) => {
           if (i === combinedMessages.length - 1) {
             return (
               <Message
+                ref={ref}
                 isNextMessageSamePerson={isNextMessageSamePerson}
                 key={message.id}
                 message={message}
