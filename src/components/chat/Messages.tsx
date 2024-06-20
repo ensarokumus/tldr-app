@@ -1,11 +1,12 @@
 import { useContext, useEffect, useRef } from "react";
 import { trpc } from "@/app/_trpc/client";
 import { INFINITE_QUERY_LIMIT } from "@/config/infinite-query";
+import { useIntersection } from "@mantine/hooks";
 import { Loader2, MessageSquare } from "lucide-react";
 import Skeleton from "react-loading-skeleton";
+
 import Message from "./Message";
 import { ChatContext } from "./ChatContext";
-import { useIntersection } from "@mantine/hooks";
 
 interface MessagesProps {
   fileId: string;
@@ -22,8 +23,6 @@ const Messages = ({ fileId }: MessagesProps) => {
       },
       {
         getNextPageParam: (lastPage) => lastPage?.nextCursor,
-        //todo: check this error and fix if possible
-        keepPreviousData: true,
       }
     );
 
