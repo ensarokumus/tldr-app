@@ -46,7 +46,7 @@ export function constructMetadata({
     },
     icons,
     metadataBase: new URL("https://tldr-neon.vercel.app"),
-    themeColor: "#FFF",
+    themeColor: "#FFFFFF",
     ...(noIndex && {
       robots: {
         index: false,
