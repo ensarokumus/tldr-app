@@ -112,7 +112,7 @@ export const POST = async (request: NextRequest) => {
     ],
   });
 
-  const stream = OpenAIStream(response, {
+  const stream = OpenAIStream(response as any, {
     async onCompletion(completion) {
       await db.message.create({
         data: {
