@@ -5,6 +5,15 @@ const nextConfig = {
     config.resolve.alias.encoding = false;
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        port: "",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
