@@ -12,9 +12,14 @@ export default function Home() {
         <div className="mx-auto mb-4 flex items-center justify-center space-x-2 overflow-hidden rounded-full border border-gray-200 bg-white px-4 py-3 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50">
           <div className="flex z-40 font-bold text-xl">
             TL
-            <span className="text-primary font-extrabold leading-5 text-2xl mx-0.5">
-              ;
-            </span>
+            <Image
+              src="/tldr-logo.png"
+              alt=""
+              width={19}
+              height={19}
+              quality={100}
+              className="mx-1 self-center"
+            />
             DR
           </div>
           <p className="text-md font-semibold text-gray-700">
@@ -63,10 +68,10 @@ export default function Home() {
               <div className="mt-16 flow-root sm:mt-24">
                 <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
                   <Image
-                    src="/dashboard-preview.jpg"
+                    src="/tldr-dashboard-preview.jpeg"
                     alt="screenshot of the dashboard"
                     width={1364}
-                    height={866}
+                    height={809}
                     quality={100}
                     className="rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
                   />
@@ -152,10 +157,10 @@ export default function Home() {
           <div className="mt-16 flow-root sm:mt-24">
             <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
               <Image
-                src="/file-upload-preview.jpg"
+                src="/tldr-file-upload-preview.jpeg"
                 alt="uploading preview"
                 width={1419}
-                height={732}
+                height={849}
                 quality={100}
                 className="rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
               />

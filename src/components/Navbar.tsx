@@ -6,6 +6,8 @@ import { ArrowRight } from "lucide-react/";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 import UserAccountNav from "./UserAccountNav";
+import MobileNav from "./MobileNav";
+import Image from "next/image";
 
 const Navbar = async () => {
   const { getUser } = getKindeServerSession();
@@ -15,15 +17,20 @@ const Navbar = async () => {
     <nav className="sticky h-14 inset-x-0 top-0 z-30 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
       <MaxWidthWrapper>
         <div className="flex h-14 items-center justify-between border-b border-zinc-200">
-          <Link href={"/"} className="flex z-40 font-bold text-xl text-black">
+          <Link href={"/"} className="flex z-40 font-bold text-2xl text-black">
             TL
-            <span className="text-primary font-extrabold leading-5 text-2xl mx-0.5">
-              ;
-            </span>
+            <Image
+              src="/tldr-logo.png"
+              alt=""
+              width={19}
+              height={19}
+              quality={100}
+              className="mx-1 self-center"
+            />
             DR
           </Link>
 
-          {/* todo: add mobile navbar */}
+          <MobileNav isAuth={!!user} />
 
           <div className="hidden items-center space-x-4 sm:flex">
             {!user ? (
