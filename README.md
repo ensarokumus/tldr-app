@@ -1,6 +1,6 @@
-# TL;DR - Fullstack SaaS-Platform Project
+# TL;DR - Fullstack SaaS-Platform Project with LLM Integration
 
-Developed using Next.js 14.2 App Router, tRPC, TypeScript, Prisma, and Tailwind
+Developed by using Next.js 14.2 App Router, tRPC, TypeScript, Prisma, and Tailwind.
 
 ## Live Demo
 
@@ -13,6 +13,7 @@ You can check out the TL;DR demo now live on Vercel!
 ## Features
 
 - Comprehensive SaaS solution built from the ground up
+- Utilises OpenAI's GPT-3.5 Turbo model
 - Includes an attractive landing page and pricing page
 - Free and Pro plans integrated with Stripe
 - An elegant and highly functional PDF viewer
@@ -30,7 +31,7 @@ You can check out the TL;DR demo now live on Vercel!
 
 ## Getting started
 
-To begin using this project, execute the following command:
+To begin using this project in your local environment, execute the following command:
 
 ```bash
   git clone https://github.com/ensarokumus/tldr-app.git
