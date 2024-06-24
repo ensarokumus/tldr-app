@@ -10,12 +10,14 @@ import { useUploadThing } from "@/lib/uploadthing";
 import { useToast } from "./ui/use-toast";
 import { trpc } from "@/app/_trpc/client";
 import { useRouter } from "next/navigation";
+import { PLANS } from "@/config/stripe";
 
 const UploadDropZone = ({ isSubscribed }: { isSubscribed: boolean }) => {
   const router = useRouter();
 
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
+  const [isError, setIsError] = useState<boolean>(false);
   const { toast } = useToast();
 
   const { startUpload } = useUploadThing(
@@ -51,14 +53,18 @@ const UploadDropZone = ({ isSubscribed }: { isSubscribed: boolean }) => {
       multiple={false}
       onDrop={async (acceptedFile) => {
         setIsUploading(true);
+        setIsError(false);
 
         const progressInterval = startSimulatedProgress();
         const res = await startUpload(acceptedFile);
 
         if (!res) {
+          setProgress(100);
+          setIsError(true);
+          clearInterval(progressInterval);
           return toast({
-            title: "Something went wrong",
-            description: "Please try again",
+            title: "File upload failed",
+            description: "Please check the pdf size/page count and try again",
             variant: "destructive",
           });
         }
@@ -67,6 +73,9 @@ const UploadDropZone = ({ isSubscribed }: { isSubscribed: boolean }) => {
         const key = fileResponse?.key;
 
         if (!key) {
+          setProgress(100);
+          setIsError(true);
+          clearInterval(progressInterval);
           return toast({
             title: "Something went wrong",
             description: "Please try again",
@@ -99,7 +108,15 @@ const UploadDropZone = ({ isSubscribed }: { isSubscribed: boolean }) => {
                   and drop
                 </p>
                 <p className="text-xs text-zinc-500">
-                  PDF (up to {isSubscribed ? "16" : "4"}MB)
+                  A single PDF file (up to{" "}
+                  {isSubscribed
+                    ? PLANS.find((p) => p.slug === "pro")!.fileSizePerPdf
+                    : PLANS.find((p) => p.slug === "free")!.fileSizePerPdf}
+                  MB &{" "}
+                  {isSubscribed
+                    ? PLANS.find((p) => p.slug === "pro")!.pagesPerPdf
+                    : PLANS.find((p) => p.slug === "free")!.pagesPerPdf}{" "}
+                  pages)
                 </p>
               </div>
 
@@ -118,17 +135,35 @@ const UploadDropZone = ({ isSubscribed }: { isSubscribed: boolean }) => {
                 <div className="w-full mt-4 max-w-xs mx-auto">
                   <Progress
                     indicatorColor={
-                      progress === 100 ? "bg-green-500" : "bg-primary"
+                      isError
+                        ? "bg-red-400"
+                        : progress === 100
+                        ? "bg-green-500"
+                        : "bg-primary"
                     }
                     value={progress}
                     className="h-1 w-full bg-zinc-200 "
                   />
-                  {progress === 100 ? (
+                  {isError ? (
+                    <div className="text-sm text-zinc-700 text-center pt-2">
+                      Error: Please check the pdf size/page count and try again.
+                    </div>
+                  ) : progress === 100 ? (
                     <div className="flex gap-1 items-center justify-center text-sm text-zinc-700 text-center pt-2">
                       <Loader2 className="w-3 h-3 animate-spin" />
-                      Loading chatPDF...
+                      Loading chat with PDF screen...
                     </div>
-                  ) : null}
+                  ) : progress > 90 ? (
+                    <div className="flex gap-1 items-center justify-center text-sm text-zinc-700 text-center pt-2">
+                      <Loader2 className="w-3 h-3 animate-spin" />
+                      Vectorising the PDF file for chat screen...
+                    </div>
+                  ) : (
+                    <div className="flex gap-1 items-center justify-center text-sm text-zinc-700 text-center pt-2">
+                      <Loader2 className="w-3 h-3 animate-spin" />
+                      Uploading the PDF file...
+                    </div>
+                  )}
                 </div>
               ) : null}
 
