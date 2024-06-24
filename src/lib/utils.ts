@@ -1,6 +1,7 @@
 import clsx, { ClassValue } from "clsx";
 import { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
+import type { Viewport } from "next";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -11,6 +12,10 @@ export function absoluteUrl(path: string) {
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}${path}`;
   return `http://localhost:${process.env.PORT ?? 3000}${path}`;
 }
+
+export const viewport: Viewport = {
+  themeColor: "#FFFFFF",
+};
 
 export function constructMetadata({
   title = "TL;DR - Too long; didn't read",
@@ -46,7 +51,6 @@ export function constructMetadata({
     },
     icons,
     metadataBase: new URL("https://tldr-neon.vercel.app"),
-    themeColor: "#FFFFFF",
     ...(noIndex && {
       robots: {
         index: false,
