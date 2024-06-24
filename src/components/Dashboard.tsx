@@ -78,8 +78,7 @@ const Dashboard = ({ subscriptionPlan }: PageProps) => {
 
                   <div className="flex items-center gap-2">
                     <MessageSquare className="h-4 w-4" />
-                    {/* TODO: display how many messages use has exchanged with the PDF file */}
-                    MessageCount (TBA)
+                    {file._count.messages}
                   </div>
 
                   <Button
