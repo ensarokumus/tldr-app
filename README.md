@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TL;DR - Fullstack SaaS-Platform Project
 
-## Getting Started
+Developed using Next.js 14.2 App Router, tRPC, TypeScript, Prisma, and Tailwind
 
-First, run the development server:
+## Live Demo
+
+![Project Image](https://github.com/ensarokumus/tldr-app/blob/main/public/tldr-thumbnail.png)
+
+You can check out the TL;DR demo now live on Vercel!
+
+[Live Demo @Vercel](https://tldr-neon.vercel.app/)
+
+## Features
+
+- Comprehensive SaaS solution built from the ground up
+- Includes an attractive landing page and pricing page
+- Free and Pro plans integrated with Stripe
+- An elegant and highly functional PDF viewer
+- Real-time API response streaming
+- Authentication powered by Kinde
+- Sleek, modern UI designed with 'shadcn-ui'
+- Optimistic UI updates for enhanced user experience
+- Infinite message loading for superior performance
+- Easy drag-and-drop file uploads
+- Modern data fetching with tRPC and Zod
+- LangChain providing limitless AI memory
+- Pinecone utilised for vector storage
+- Prisma used as ORM
+- Entirely written in TypeScript
+
+## Getting started
+
+To begin using this project, execute the following command:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/ensarokumus/tldr-app.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then, copy the variables from .env.example into a new .env file, fill them out, and you're all set to start!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Test Cards for Pro plan
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To explore the Pro plan, you can use one of the test cards provided by [Stripe - Test cards](https://docs.stripe.com/testing#cards).
 
-## Learn More
+Note that in Stripe's test mode, real payment cards are not accepted; this feature is solely for testing the Pro plan subscription system.
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[MIT](https://choosealicense.com/licenses/mit/)
