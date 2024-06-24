@@ -8,10 +8,12 @@ import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 import UserAccountNav from "./UserAccountNav";
 import MobileNav from "./MobileNav";
 import Image from "next/image";
+import { getUserSubscriptionPlan } from "@/lib/stripe";
 
 const Navbar = async () => {
   const { getUser } = getKindeServerSession();
   const user: KindeUser | null = await getUser();
+  const subscriptionPlan = await getUserSubscriptionPlan();
 
   return (
     <nav className="sticky h-14 inset-x-0 top-0 z-30 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
@@ -30,7 +32,17 @@ const Navbar = async () => {
             DR
           </Link>
 
-          <MobileNav isAuth={!!user} />
+          <MobileNav
+            isAuth={!!user}
+            name={
+              !user?.given_name || !user?.family_name
+                ? "Your Account"
+                : `${user.given_name} ${user.family_name}`
+            }
+            email={user?.email ?? ""}
+            imageUrl={user?.picture ?? ""}
+            subscriptionType={subscriptionPlan.isSubscribed ? "pro" : "free"}
+          />
 
           <div className="hidden items-center space-x-4 sm:flex">
             {!user ? (

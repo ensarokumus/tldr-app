@@ -76,8 +76,8 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
 
   return (
     <div className="w-full bg-white rounded-md shadow flex flex-col items-center">
-      <div className="h-14 w-full border-b border-zinc-200 flex items-center justify-between px-2">
-        <div className="flex items-center gap-1.5">
+      <div className="h-14 w-full border-b border-zinc-200 flex items-center justify-between md:px-2">
+        <div className="flex items-center md:gap-1.5">
           <Button
             disabled={pageNumber <= 1}
             onClick={() => {
@@ -119,15 +119,21 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
             }}
             variant="ghost"
             aria-label="next page"
+            size="sm"
           >
             <ChevronUp className="h-4 w-4" />
           </Button>
         </div>
 
-        <div className="space-x-1">
+        <div className="flex md:space-x-1">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button className="gap-2" aria-label="zoom" variant="ghost">
+              <Button
+                className="gap-2"
+                aria-label="zoom"
+                variant="ghost"
+                size="sm"
+              >
                 <Search className="h-4 w-4" />
                 {scale * 100}%<ChevronDown className="h-4 w-4" />
               </Button>
@@ -158,6 +164,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
             onClick={() => setRotation((prev) => prev + 90)}
             variant="ghost"
             aria-label="rotate clockwise"
+            size="sm"
           >
             <RotateCw className="h-4 w-4" />
           </Button>
@@ -165,6 +172,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
             onClick={() => setRotation((prev) => prev - 90)}
             variant="ghost"
             aria-label="rotate counter-clockwise"
+            size="sm"
           >
             <RotateCcw className="h-4 w-4" />
           </Button>
