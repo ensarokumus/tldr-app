@@ -27,6 +27,18 @@ const nextConfig = {
         hostname: "avatars.githubusercontent.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "*.googleusercontent.com",
+        port: "",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "appleid.apple.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };
