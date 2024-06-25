@@ -138,7 +138,8 @@ const MobileNav = ({
                 ) : (
                   <li>
                     <Link href="/pricing">
-                      Upgrade <Gem className="text-primary h-4 w-4 ml-1.5" />
+                      Upgrade{" "}
+                      <Gem className="text-primary h-4 w-4 ml-1.5 inline" />
                     </Link>
                   </li>
                 )}
