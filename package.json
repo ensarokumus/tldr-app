@@ -32,6 +32,7 @@
     "@trpc/react-query": "^11.0.0-rc.401",
     "@trpc/server": "^11.0.0-rc.401",
     "@uploadthing/react": "^6.6.0",
+    "@vercel/analytics": "^1.4.1",
     "add": "^2.0.6",
     "ai": "^2.2.13",
     "button": "^1.1.1",
